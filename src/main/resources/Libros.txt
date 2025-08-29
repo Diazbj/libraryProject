@@ -1,0 +1,96 @@
+[
+  {
+    "id": "1",
+    "title": "Cien años de soledad",
+    "author": "Gabriel García Márquez",
+    "isbn": "9780307474728",
+    "reviews": [
+      { "rating": 5, "comment": "Una obra maestra de la literatura." },
+      { "rating": 4, "comment": "Complejo pero fascinante." }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Don Quijote de la Mancha",
+    "author": "Miguel de Cervantes",
+    "isbn": "9788491050294",
+    "reviews": [
+      { "rating": 5, "comment": "Clásico imprescindible." }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "El amor en los tiempos del cólera",
+    "author": "Gabriel García Márquez",
+    "isbn": "9780307389732",
+    "reviews": [
+      { "rating": 4, "comment": "Historia hermosa y profunda." }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Rayuela",
+    "author": "Julio Cortázar",
+    "isbn": "9788437604947",
+    "reviews": [
+      { "rating": 5, "comment": "Innovador en su narrativa." },
+      { "rating": 3, "comment": "Difícil de seguir en algunas partes." }
+    ]
+  },
+  {
+    "id": "5",
+    "title": "La ciudad y los perros",
+    "author": "Mario Vargas Llosa",
+    "isbn": "9788420471839",
+    "reviews": [
+      { "rating": 4, "comment": "Crudo y realista." }
+    ]
+  },
+  {
+    "id": "6",
+    "title": "Pedro Páramo",
+    "author": "Juan Rulfo",
+    "isbn": "9788437601984",
+    "reviews": [
+      { "rating": 5, "comment": "Obra corta pero intensa." }
+    ]
+  },
+  {
+    "id": "7",
+    "title": "La sombra del viento",
+    "author": "Carlos Ruiz Zafón",
+    "isbn": "9788408172177",
+    "reviews": [
+      { "rating": 5, "comment": "Un viaje mágico a Barcelona." },
+      { "rating": 4, "comment": "Muy atrapante." }
+    ]
+  },
+  {
+    "id": "8",
+    "title": "Los detectives salvajes",
+    "author": "Roberto Bolaño",
+    "isbn": "9788433968333",
+    "reviews": [
+      { "rating": 4, "comment": "Narrativa única." }
+    ]
+  },
+  {
+    "id": "9",
+    "title": "Ficciones",
+    "author": "Jorge Luis Borges",
+    "isbn": "9786071124141",
+    "reviews": [
+      { "rating": 5, "comment": "Obra fundamental de la literatura argentina." }
+    ]
+  },
+  {
+    "id": "10",
+    "title": "El túnel",
+    "author": "Ernesto Sabato",
+    "isbn": "9788432209598",
+    "reviews": [
+      { "rating": 5, "comment": "Intenso y psicológico." },
+      { "rating": 4, "comment": "Corto pero impactante." }
+    ]
+  }
+]
