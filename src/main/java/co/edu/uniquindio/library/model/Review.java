@@ -1,7 +1,6 @@
 package co.edu.uniquindio.library.model;
 
 import lombok.*;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Setter
 @Getter

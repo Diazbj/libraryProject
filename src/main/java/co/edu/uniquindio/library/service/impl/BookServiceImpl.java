@@ -32,6 +32,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<CreateBookDTO> searchBook(SearchBookDTO searchBook) throws Exception {
         List<Book> books;
+        if (searchBook.isbn() == null
+                && searchBook.title() == null
+                && searchBook.author() == null) {
+            throw new Exception("Debe ingresar al menos un criterio de búsqueda");
+        }
 
         if (searchBook.isbn() != null) {
             books = bookRepository.findByIsbnContainingIgnoreCase(searchBook.isbn());
