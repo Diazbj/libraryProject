@@ -31,11 +31,17 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<CreateBookDTO> searchBook(SearchBookDTO searchBook) throws Exception {
-        List<Book> books = bookRepository.searchBooks(
-                searchBook.title(),
-                searchBook.author(),
-                searchBook.isbn()
-        );
+        List<Book> books;
+
+        if (searchBook.isbn() != null) {
+            books = bookRepository.findByIsbnContainingIgnoreCase(searchBook.isbn());
+        } else if (searchBook.title() != null) {
+            books = bookRepository.findByTitleContainingIgnoreCase(searchBook.title());
+        } else if (searchBook.author() != null) {
+            books = bookRepository.findByAuthorContainingIgnoreCase(searchBook.author());
+        } else {
+            books = bookRepository.findAll();
+        }
 
         return books.stream()
                 .map(bookMapper::toDTO)
