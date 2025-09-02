@@ -2,6 +2,7 @@ package co.edu.uniquindio.library.service.impl;
 
 import co.edu.uniquindio.library.dto.CreateBookDTO;
 import co.edu.uniquindio.library.dto.SearchBookDTO;
+import co.edu.uniquindio.library.dto.SearchBookSimpleDTO;
 import co.edu.uniquindio.library.mapper.BookMapper;
 import co.edu.uniquindio.library.model.Book;
 import co.edu.uniquindio.library.repository.BookRepository;
@@ -46,6 +47,32 @@ public class BookServiceImpl implements BookService {
             books = bookRepository.findByAuthorContainingIgnoreCase(searchBook.author());
         } else {
             books = bookRepository.findAll();
+        }
+
+        return books.stream()
+                .map(bookMapper::toDTO)
+                .toList();
+    }
+
+    @Override
+    public List<CreateBookDTO> searchBookSimple(SearchBookSimpleDTO searchBook) throws Exception {
+        List<Book> books;
+
+        if ((searchBook.title() == null || searchBook.title().isBlank()) &&
+                (searchBook.author() == null || searchBook.author().isBlank())) {
+            throw new Exception("Debe ingresar al menos título o autor para la búsqueda");
+        }
+
+        if (searchBook.title() != null && !searchBook.title().isBlank() &&
+                searchBook.author() != null && !searchBook.author().isBlank()) {
+            // Busca por título o autor
+            books = bookRepository.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(
+                    searchBook.title(), searchBook.author()
+            );
+        } else if (searchBook.title() != null && !searchBook.title().isBlank()) {
+            books = bookRepository.findByTitleContainingIgnoreCase(searchBook.title());
+        } else {
+            books = bookRepository.findByAuthorContainingIgnoreCase(searchBook.author());
         }
 
         return books.stream()
