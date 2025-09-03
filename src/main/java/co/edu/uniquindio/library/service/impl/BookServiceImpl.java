@@ -39,15 +39,26 @@ public class BookServiceImpl implements BookService {
             throw new Exception("Debe ingresar al menos un criterio de búsqueda");
         }
 
-        if (searchBook.isbn() != null) {
-            books = bookRepository.findByIsbnContainingIgnoreCase(searchBook.isbn());
+        if (searchBook.title() != null && searchBook.author() != null && searchBook.isbn() != null) {
+            books = bookRepository.findByTitleContainingIgnoreCaseAndAuthorContainingIgnoreCaseAndIsbnContainingIgnoreCase(
+                    searchBook.title(), searchBook.author(), searchBook.isbn());
+        } else if (searchBook.title() != null && searchBook.author() != null) {
+            books = bookRepository.findByTitleContainingIgnoreCaseAndAuthorContainingIgnoreCase(
+                    searchBook.title(), searchBook.author());
+        } else if (searchBook.title() != null && searchBook.isbn() != null) {
+            books = bookRepository.findByTitleContainingIgnoreCaseAndIsbnContainingIgnoreCase(
+                    searchBook.title(), searchBook.isbn());
+        } else if (searchBook.author() != null && searchBook.isbn() != null) {
+            books = bookRepository.findByAuthorContainingIgnoreCaseAndIsbnContainingIgnoreCase(
+                    searchBook.author(), searchBook.isbn());
         } else if (searchBook.title() != null) {
             books = bookRepository.findByTitleContainingIgnoreCase(searchBook.title());
         } else if (searchBook.author() != null) {
             books = bookRepository.findByAuthorContainingIgnoreCase(searchBook.author());
         } else {
-            books = bookRepository.findAll();
+            books = bookRepository.findByIsbnContainingIgnoreCase(searchBook.isbn());
         }
+
 
         return books.stream()
                 .map(bookMapper::toDTO)

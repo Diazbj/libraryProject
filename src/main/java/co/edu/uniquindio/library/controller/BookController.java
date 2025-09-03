@@ -29,11 +29,15 @@ public class BookController {
         return ResponseEntity.ok(new MessageDTO<>(false,"Libro creado con éxito"));
     }
 
-    @PostMapping("/search")
-    @Operation(summary = "search nooks by tittle, author or isbn")
-    public ResponseEntity<MessageDTO<List<CreateBookDTO>>> searchBooks(@Valid @RequestBody SearchBookDTO searchBook) throws Exception {
+    @GetMapping("/search")
+    @Operation(summary = "search books by title, author or isbn")
+    public ResponseEntity<MessageDTO<List<CreateBookDTO>>> searchBooks(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String author,
+            @RequestParam(required = false) String isbn) throws Exception {
+        SearchBookDTO searchBook = new SearchBookDTO(title, author, isbn);
         List<CreateBookDTO> books = bookService.searchBook(searchBook);
-        return ResponseEntity.ok(new MessageDTO<>(false,books));
+        return ResponseEntity.ok(new MessageDTO<>(false, books));
     }
 
     @GetMapping("/search-simple")
